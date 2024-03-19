@@ -17,6 +17,7 @@ const slides = [
 	}
 ]
 
+/* Ajout des flèches de direction */
 const clic_arrow_left = document.querySelector(".arrow_left");
 const clic_arrow_right = document.querySelector(".arrow_right");
 
@@ -28,3 +29,14 @@ clic_arrow_right.addEventListener("click", function() {
 	alert("Bouton cliqué droit")
 })
 
+/* Ajout des dots sur le slider */
+const div_dots = document.querySelector("#banner .dots");
+
+for (let i = 0; i < slides.length; i++) {
+	const dot = document.createElement("li");
+	dot.classList.add("dot");
+	if (i === 0) {
+		dot.classList.add("dot_selected");
+	}
+	div_dots.appendChild(dot);
+}
