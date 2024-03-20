@@ -22,12 +22,41 @@ const clic_arrow_left = document.querySelector(".arrow_left");
 const clic_arrow_right = document.querySelector(".arrow_right");
 
 clic_arrow_left.addEventListener("click", function() {
-	alert("Bouton cliqué gauche")
-})
+	const nbreDots = document.querySelectorAll(".dot");
+	const slideActive = document.querySelector(".dot_selected");
+
+	let selectedIndex;
+	for (let i = 0; i < nbreDots.length; i++) {
+		if (nbreDots[i] === slideActive) {
+			selectedIndex = i;
+			break;
+		}
+	}
+
+	const newIndex = (selectedIndex - 1 + nbreDots.length) % nbreDots.length;
+	slideActive.classList.remove("dot_selected");
+	nbreDots[newIndex].classList.add("dot_selected");
+
+});
 
 clic_arrow_right.addEventListener("click", function() {
-	alert("Bouton cliqué droit")
-})
+	const nbreDots = document.querySelectorAll(".dot");
+	const slideActive = document.querySelector(".dot_selected");
+
+	let selectedIndex;
+	for (let i = 0; i < nbreDots.length; i++) {
+		if (nbreDots[i] === slideActive) {
+			selectedIndex = i;
+			break;
+		}
+	}
+
+	const newIndex = (selectedIndex + 1) % nbreDots.length;
+
+	slideActive.classList.remove("dot_selected");
+	nbreDots[newIndex].classList.add("dot_selected");
+
+});
 
 /* Ajout des dots sur le slider */
 const div_dots = document.querySelector("#banner .dots");
