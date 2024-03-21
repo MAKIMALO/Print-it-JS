@@ -22,19 +22,12 @@ const slides = [
 let currentSlideIndex = 0;
 
 function changeSlide(sens) {
-    currentSlideIndex = currentSlideIndex + sens;
-	
-    if (currentSlideIndex < 0)
-        currentSlideIndex = slides.length - 1;
-    else if (currentSlideIndex >= slides.length) {
-		currentSlideIndex = 0;
-	}
+    currentSlideIndex = (currentSlideIndex + sens + slides.length) % slides.length;
 
     document.querySelector(".banner-img").src = "./assets/images/slideshow/" + slides[currentSlideIndex].image;
 	document.getElementById("text").innerHTML = slides[currentSlideIndex].tagLine;
 
 }
-
 
 
 /* Ajout des Events Listeners sur les flèches */
@@ -58,7 +51,7 @@ clicArrowLeft.addEventListener("click", function() {
     slideActive.classList.remove("dot_selected");
     nbreDots[newSelectedIndex].classList.add("dot_selected");
 
-    changeSlide(newSelectedIndex);
+    changeSlide(-1);
 });
 
 
@@ -78,8 +71,7 @@ clicArrowRight.addEventListener("click", function() {
     slideActive.classList.remove("dot_selected");
     nbreDots[newSelectedIndex].classList.add("dot_selected");
 
-    changeSlide(newSelectedIndex);
-
+    changeSlide(1);
 });
 
 
