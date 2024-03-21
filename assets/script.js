@@ -22,11 +22,19 @@ const slides = [
 let currentSlideIndex = 0;
 
 function changeSlide(sens) {
-    currentSlideIndex = (currentSlideIndex + sens + slides.length) % slides.length;
+
+    let newIndex = currentSlideIndex + sens;
+
+    if (newIndex < 0) {
+        currentSlideIndex = slides.length -1;
+    } else if (newIndex >= slides.length) {
+        currentSlideIndex = 0;
+    } else {
+        currentSlideIndex = newIndex;
+    }
 
     document.querySelector(".banner-img").src = "./assets/images/slideshow/" + slides[currentSlideIndex].image;
 	document.getElementById("text").innerHTML = slides[currentSlideIndex].tagLine;
-
 }
 
 
