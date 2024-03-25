@@ -88,7 +88,7 @@ clicArrowRight.addEventListener("click", function() {
 const div_dots = document.querySelector("#banner .dots");
 
 for (let i = 0; i < slides.length; i++) {
-    const dot = document.createElement("li");
+    const dot = document.createElement("p");
     dot.classList.add("dot");
     if (i === 0) {
         dot.classList.add("dot_selected");
